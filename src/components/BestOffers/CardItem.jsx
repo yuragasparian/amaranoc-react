@@ -1,5 +1,6 @@
 import React from "react";
 import CardCarousel from "./CardCarousel";
+import  Star  from "../../assets/icons/star.svg";
 
 function CardItem({ offer }) {
   return (
@@ -7,15 +8,18 @@ function CardItem({ offer }) {
       <CardCarousel images={offer.images} />
 
       <div className="card-body">
-        <div className="flex justify-between">
-          <p>{offer.address}</p>
-          <p>{offer.maxPeopleCount}</p>
-          <div className="w-10 bg-[#FD993A] text-white">{offer.rating}</div>
+        <div className="flex justify-between items-center h-8">
+          <p className="font-bold text-base">
+            {offer.address[0].toUpperCase() + offer.address.slice(1)}
+          </p>
+          <p className="text-base">{offer.maxPeopleCount}</p>
+          <div className="flex justify-center w-12 rounded py-[1px] bg-[#FD993A] text-white gap-1">
+            <img src={Star} alt=""  />
+            <span className="text-lg">{offer.rating}</span>
+          </div>
         </div>
         <div>
-            <h1>
-                {offer.price}$
-            </h1>
+          <h1>{offer.price}$</h1>
         </div>
       </div>
     </div>
