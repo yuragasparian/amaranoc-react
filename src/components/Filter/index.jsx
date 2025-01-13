@@ -5,7 +5,7 @@ import MaxPeople from './filterTypes/MaxPeople';
 
 function Filter() {
   return (
-    <div className="border rounded-2xl p-5 row-span-full">
+    <div className="border rounded-2xl p-5 w-1/4">
       <Region />
       <hr className="my-5" />
       <Price />

@@ -1,28 +1,35 @@
-import React from "react";
-import { regions } from "../Regions";
+import React, { useMemo } from "react";
 import RegionItem from "../RegionItem";
 import { useSearchParams } from "react-router";
+import { regions } from "../../../data/Regions";
 
 function Region() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeRegions = searchParams.getAll("region_id");
+
+  const activeRegions = useMemo(() => searchParams.getAll("region_id"), [searchParams]);
 
   const onChecked = (id, isChecked) => {
-    // Clone the search params
-    const newSearchParams = new URLSearchParams(searchParams);
+    let updatedRegions = new Set(activeRegions);
 
     if (isChecked) {
-      // Add region_id if checked
-      newSearchParams.append("region_id", id);
+      updatedRegions.add(id.toString());
     } else {
-      // Remove region_id if unchecked
-      const updatedRegions = newSearchParams.getAll("region_id").filter((region) => region !== id.toString());
-      newSearchParams.delete("region_id");
-      updatedRegions.forEach((region) => newSearchParams.append("region_id", region));
+      updatedRegions.delete(id.toString());
     }
 
-    // Update the URL search parameters
-    setSearchParams(newSearchParams);
+    // Convert the Set back to an array
+    const updatedRegionsArray = Array.from(updatedRegions);
+
+    // Only update the search params if there are changes
+    if (updatedRegionsArray.join(",") !== activeRegions.join(",")) {
+      const newSearchParams = new URLSearchParams(searchParams);
+      newSearchParams.delete("region_id"); // Clear existing "region_id" params
+
+      updatedRegionsArray.forEach((region) => newSearchParams.append("region_id", region));
+
+      // Update the search params using `setSearchParams`
+      setSearchParams(newSearchParams);
+    }
   };
 
   return (
@@ -36,7 +43,7 @@ function Region() {
             regionName={region.name}
             id={region.id}
             isChecked={activeRegions.includes(region.id.toString())}
-            onChecked={onChecked}
+            onChecked={(isChecked) => onChecked(region.id, isChecked)}
           />
         ))}
       </div>

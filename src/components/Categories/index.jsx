@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { sections } from "./SectionNames";
+import { sections } from "../../data/SectionNames";
 import CategoryItem from "./CategoryItem";
 
 function Categories() {

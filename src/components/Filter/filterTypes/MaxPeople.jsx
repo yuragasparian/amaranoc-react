@@ -19,7 +19,7 @@ function MaxPeople() {
     <div>
       <p className="py-1 pb-3 font-bold">Max people count</p>
 
-      <div className="flex w-2/3 gap-3 items-center">
+      <div className="flex w-3/4 gap-3 items-center">
         <button className="btn btn-circle w-10 h-10" onClick={handleSubstract}>-</button>
         <input
           type="number"

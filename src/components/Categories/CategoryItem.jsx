@@ -4,13 +4,13 @@ import { useSearchParams } from "react-router";
 function CategoryItem({ item }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Check if the current section matches the item's path
+
   const isActive = searchParams.get("section") === item.path;
 
   const handleClick = () => {
-    // Update or add the `section` parameter in the query
+
     searchParams.set("section", item.path);
-    setSearchParams(searchParams); // Update the URL
+    setSearchParams(searchParams);
   };
 
   return (

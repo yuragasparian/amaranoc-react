@@ -5,7 +5,7 @@ import  Star  from "../../assets/icons/star.svg";
 function CardItem({ offer }) {
   return (
     <div className="card card-compact bg-base-100 shadow-xl overflow-hidden">
-      <CardCarousel images={offer.images} />
+      <CardCarousel images={[offer.id+"_frontal.jpg", offer.id+"_bedroom.jpg", offer.id+"_kitchen.jpg", offer.id+"_bathroom.jpg"]} />
 
       <div className="card-body">
         <div className="flex justify-between items-center h-8">
@@ -19,7 +19,7 @@ function CardItem({ offer }) {
           </div>
         </div>
         <div>
-          <h1>{offer.price}$</h1>
+          <h1 className="font-bold text-xl text-slate-600">{offer.price}$</h1>
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ function CardCarousel({images}) {
         <div
           style={{
             backgroundImage:
-              `url(images/${image})`,
+              `url(houses_images/${image})`,
           }}
         >
         </div>

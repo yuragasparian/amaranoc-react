@@ -9,9 +9,9 @@ function Home() {
   return (
     <>
       <Header />
-      <div className="mt-6 grid grid-cols-4 mx-16 gap-8 grid-rows-4"> 
+      <div className="mt-6 flex mx-16 gap-8 "> 
         <Filter />
-        <div className="col-span-3 mx-5 flex flex-col gap-10">
+        <div className="w-3/4 mx-5 flex flex-col gap-10">
         <SideFilter />
         <Categories />
         <BestOffers />
